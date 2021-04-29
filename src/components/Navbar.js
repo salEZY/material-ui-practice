@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   popBtn: {
     marginLeft: "auto",
   },
+ 
 }));
 
 const Navbar = () => {
@@ -41,8 +42,6 @@ const Navbar = () => {
     setChecked(event.target.checked);
   };
 
- 
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -54,22 +53,25 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const list = () => {
-    
-      <List>
-        <ListItem>List item working</ListItem>
-        <ListItem>List item working</ListItem>
-        <ListItem>List item working</ListItem>
-      </List>
-   
-  };
+  const list = (
+    <List>
+      <ListItem>List item working</ListItem>
+      <ListItem>List item working</ListItem>
+      <ListItem>List item working</ListItem>
+    </List>
+  )
 
   return (
     <>
       <AppBar position="static" className={classes.AppBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setDrawer(true)}>
-            <MenuIcon  />
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setDrawer(true)}
+          >
+            <MenuIcon />
           </IconButton>
 
           <Typography variant="h6">VEZBA MATERIAL-UI</Typography>
@@ -102,7 +104,7 @@ const Navbar = () => {
           </Popover>
         </Toolbar>
       </AppBar>
-      
+
       <Checkbox
         checked={checked}
         onChange={handleChange}
@@ -113,9 +115,14 @@ const Navbar = () => {
           <AddIcon />
         </Fab>
       </Tooltip>
-      <Drawer anchor={"left"} open={drawer} onClose={() => setDrawer(false)}>
-        {list()}
+      
+      <Drawer anchor={"left"} open={drawer} onClose={() => setDrawer(false)} className={classes.dr}>
+        {/* <div style={{ height: '100%'}}>
+            <h3>dadasdasdasdada</h3>
+        </div> */}
+        {list}
       </Drawer>
+    
     </>
   );
 };
